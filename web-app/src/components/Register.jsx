@@ -24,7 +24,7 @@ export default function() {
                     <button className="w-full my-5 py-2 bg-[#5678CE] rounded-lg text-white">Register</button>
 
                     <div className="flex justify-center text-gray-400 py-2 text-sm">
-                        <p>Already has an aacount ? Click here</p>
+                        <p>Already has an account ? Click here</p>
 
                     </div>
                 </form>
