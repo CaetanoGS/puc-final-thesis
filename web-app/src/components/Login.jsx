@@ -10,7 +10,10 @@ export default function() {
             </div>
 
             <div className="flex flex-col justify-center">
+
                 <form action="" className="max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
+                    <p className=" text-center text-[#5678CE] text-2xl">Sign In</p>
+
                     <div className="flex flex-col py-2 text-gray-400">
                         <input type="text" placeholder="Username" className="rounded-lg bg-gray-200 mt-2 p-2 focus:bg-gray-300 focus:outline-none"/>
                     </div>
