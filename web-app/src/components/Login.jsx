@@ -11,7 +11,7 @@ export default function() {
 
             <div className="flex flex-col justify-center">
 
-                <form action="" className="max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
+                <form action="/dashboard" className="max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
                     <p className=" text-center text-[#5678CE] text-2xl">Sign In</p>
 
                     <div className="flex flex-col py-2 text-gray-400">
