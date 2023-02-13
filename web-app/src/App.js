@@ -1,16 +1,17 @@
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Sidebar from "./components/Sidebar";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Login />
-       <Register />
-       <Sidebar />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path='/signup' element={<Register/>} />
+          <Route path='/' element={<Login/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
-export default App;
