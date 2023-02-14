@@ -87,8 +87,8 @@ const data1 = {
 
 export default function Dashboard() {
     return (
-        <div className="flex max-h-full">
-            <div className="flex flex-col h-screen p-3 bg-gray-800 shadow w-60">
+        <div className="flex">
+            <div className="flex flex-col h-screen p-3 bg-gray-800 shadow w-60 max-h-full">
                 <div className="space-y-3">
                     <div className="flex items-center">
                         <h2 className="text-xl font-bold text-white">Dashboard</h2>
@@ -165,10 +165,89 @@ export default function Dashboard() {
                         <Doughnut data={data1} options={{ maintainAspectRatio: false }} />
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-1">
-                    <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                        Table of transactions
-                    </div>
+                <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-1 overflow-y-scroll max-h-60 pb-0   shadow">
+                    <table class="table-auto w-full px-4 py-5 bg-white rounded-lg shadow pb-3">
+                        <tbody class="table-auto w-full px-4 py-5 bg-white rounded-lg shadow text-center">
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                                <td className="py-2">Walmart</td>
+                                <td className="py-2">12$</td>
+                                <td className="py-2">21/01/2023</td>
+                                <td className="py-2">Market</td>
+                                <td className="py-2">
+                                    <button class=" bg-red-600  hover:bg-red text-white font-bold py-1 px-4 rounded-full">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
