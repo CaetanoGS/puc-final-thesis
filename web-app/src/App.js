@@ -1,6 +1,6 @@
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ export default function App() {
         <Routes>
           <Route path='/signup' element={<Register/>} />
           <Route path='/' element={<Login/>} />
-          <Route path='/dashboard' element={<Sidebar/>} />
+          <Route path='/dashboard' element={<Dashboard/>} />
         </Routes>
       </div>
     </Router>

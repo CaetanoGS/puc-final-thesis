@@ -85,9 +85,9 @@ const data1 = {
     ],
 };
 
-export default function Sidebar() {
+export default function Dashboard() {
     return (
-        <div className="flex">
+        <div className="flex max-h-full">
             <div className="flex flex-col h-screen p-3 bg-gray-800 shadow w-60">
                 <div className="space-y-3">
                     <div className="flex items-center">
@@ -163,6 +163,11 @@ export default function Sidebar() {
                     </div>
                     <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
                         <Doughnut data={data1} options={{ maintainAspectRatio: false }} />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-1">
+                    <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
+                        Table of transactions
                     </div>
                 </div>
             </div>
