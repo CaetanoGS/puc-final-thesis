@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+
+// TODO: Criar uma chamada aqui para coletar os dados dos graficos e os dados para preencher a tabela. Essa chamada de preferencia, pode ser na propria API que deve ser criada
 import {
     Chart as ChartJS,
     CategoryScale,
