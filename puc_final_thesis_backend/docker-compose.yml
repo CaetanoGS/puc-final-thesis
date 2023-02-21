@@ -9,4 +9,7 @@ services:
     ports:
       - '5432:5432'
     volumes: 
-      - /Users/caetano/Documents/puc-projects/puc-final-thesis/puc_final_thesis_backend/tmp/psql
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
