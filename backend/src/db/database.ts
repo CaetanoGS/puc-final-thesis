@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Sequelize, DataTypes } from 'sequelize'
+import { Sequelize } from 'sequelize'
 
 
 
@@ -11,7 +11,7 @@ const postgres_database = process.env.DOCA_POSTGRES_DATABASE
 
 
 const sequelize = new Sequelize(
-    `postgres://${postgres_user}:${postgres_password}@127.0.0.1:5432/${postgres_database}`,
+    `postgres://${postgres_user}:${postgres_password}@localhost:5432/${postgres_database}`,
     {
         dialect: "postgres"
     }
@@ -27,5 +27,4 @@ const doca_db: any = {}
 doca_db.Sequelize = Sequelize
 doca_db.sequelize = sequelize
 
-//exporting the module
 module.exports = doca_db
