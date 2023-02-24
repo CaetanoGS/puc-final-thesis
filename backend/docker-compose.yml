@@ -1,15 +1,26 @@
-version: '3.8'
+version: "3.8"
 services:
   db:
     image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    container_name: doca_db
     ports:
-      - '5432:5432'
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
     volumes: 
-      - db:/var/lib/postgresql/data
+      - psql:/var/lib/postgresql/data:Z
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - psql_admin:/var/lib/pgadmin:Z
+
 volumes:
-  db:
-    driver: local
+  psql:
+  psql_admin:

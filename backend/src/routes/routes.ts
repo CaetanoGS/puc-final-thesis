@@ -1,8 +1,9 @@
 import express from 'express';
 import { authenticationRoutes } from './authentication';
 import { transationRoutes } from './transaction';
-import { userRoutes } from './users';
 import { walletRoutes } from './wallets';
+const userRoutes = require ('./users')
+
 
 export const routes = express.Router();
 

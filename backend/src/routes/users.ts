@@ -1,12 +1,15 @@
-import { Router } from 'express';
+const express = require('express')
+const userController = require('../controllers/userController')
+const { signup, login } = userController
+const userAuth = require('../middlewares/userAuth')
 
-export const userRoutes = Router();
+const router = express.Router()
 
+//signup endpoint
+//passing the middleware function to the signup
+router.post('/signup', userAuth.saveUser, signup)
 
-userRoutes.get('/users/:id', (req, res) => {
-    res.send("Retrieve users");
-});
+//login route
+router.post('/login', login )
 
-userRoutes.post('/users', (req, res) => {
-    res.send("Create users");
-});
+module.exports = router
