@@ -1,8 +1,6 @@
 import dotenv from 'dotenv';
 import { Sequelize } from 'sequelize'
 
-
-
 dotenv.config();
 
 const postgres_user = process.env.DOCA_POSTGRES_USER
@@ -23,8 +21,7 @@ sequelize.authenticate().then(() => {
     console.log(err)
 })
 
-const doca_db: any = {}
-doca_db.Sequelize = Sequelize
-doca_db.sequelize = sequelize
+const dbSession: any = {}
+dbSession.sequelize = sequelize
 
-module.exports = doca_db
+export const db = dbSession
