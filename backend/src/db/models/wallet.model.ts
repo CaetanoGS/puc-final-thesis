@@ -17,3 +17,7 @@ export const Wallet = db.sequelize.define("wallets", {
 User.hasOne(Wallet);
 Wallet.belongsTo(User);
 
+
+Wallet.sync({ force: true }).then(
+  () => console.log("Sync complete")
+);

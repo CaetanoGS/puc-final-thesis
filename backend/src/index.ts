@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { routes } from './routes/routes';
 import { db } from './db/database';
+import { Transaction } from './db/models/transactions.model';
 const cookieParser = require('cookie-parser')
 
 dotenv.config();
@@ -16,8 +17,8 @@ app.use(cookieParser());
 
 
 
-(async() => {
-  await db.sequelize.sync({force: true}).then(function () {
+(async () => {
+  await db.sequelize.sync({ force: true }).then(function () {
     console.log("Database Configured");
   });
 })();

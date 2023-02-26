@@ -25,3 +25,7 @@ export const Transaction = db.sequelize.define("transactions", {
 
 Wallet.hasMany(Transaction)
 Transaction.belongsTo(Wallet)
+
+Transaction.sync({ force: true }).then(
+    () => console.log("Sync complete")
+);

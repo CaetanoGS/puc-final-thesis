@@ -21,7 +21,6 @@ sequelize.authenticate().then(() => {
     console.log(err)
 })
 
-const dbSession: any = {}
-dbSession.sequelize = sequelize
-
-export const db = dbSession
+export const db: any = {
+    sequelize: sequelize
+}
