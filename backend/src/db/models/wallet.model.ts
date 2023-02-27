@@ -11,7 +11,7 @@ export const Wallet = db.sequelize.define("wallets", {
     }
  },
  {
-    timestamps: true,
+    timestamps: false,
   });
 
 User.hasOne(Wallet);

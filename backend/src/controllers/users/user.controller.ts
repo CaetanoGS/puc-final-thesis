@@ -10,38 +10,39 @@ export class UserController implements IUser {
         private fullName?: string
     ) { }
 
-    async createUser() {
+    async createUser(): Promise<typeof User | Error> {
         const userResponse = await User.findOne(
             { where: { email: this.email } }
         );
-        if (userResponse)
-            return response.status(400).send("User already exists.");
+        if (userResponse) {
+            const creationUserError = new Error("User already exists")
+            return creationUserError.message
+        }
 
-        const user = User.build(
+        return await User.create(
             {
                 fullName: this.fullName,
                 email: this.email,
                 password: this.password
             }
         );
-        const response1 = await user.save();
-        console.log(response1)
-        return response.status(201);
     }
 
-    async login(): Promise<Response> {
+    async login(): Promise<Error | Object> {
         const userResponse = await User.findOne(
             { where: { email: this.email } }
         );
+
+        const invalidCredentialsError = new Error("Username or password is invalid.");
+
+
         if (!userResponse)
-            return response.status(404).send("User does not exist.");
+            return invalidCredentialsError.message;
 
         if (this.email == userResponse.email && this.password == userResponse.password)
-            return response.status(200).send(
-                { token: "fjdnkjfdfkjdfhdfkjbdfkjdfbdfkjdfbdkf" }
-            );
-        
-        return response.status(400).send({ "detail": "User does not exist" });
+            return { token: "fjdnkjfdfkjdfhdfkjbdfkjdfbdfkjdfbdkf" }
+
+        return invalidCredentialsError.message;
 
     }
 }

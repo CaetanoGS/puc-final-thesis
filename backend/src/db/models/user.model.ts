@@ -23,5 +23,5 @@ export const User = db.sequelize.define("users", {
     }
  },
  {
-    timestamps: true,
+    timestamps: false,
   });

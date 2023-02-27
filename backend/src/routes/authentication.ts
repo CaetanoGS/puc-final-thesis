@@ -1,17 +1,22 @@
-import { Router, response } from 'express';
+import { Router } from 'express';
 import { UserController } from '../controllers/users/user.controller';
+import { User } from '../db/models/user.model';
+import { isObject } from 'util';
 
 export const authenticationRoutes = Router();
 
 
-authenticationRoutes.post('/sign-in', async (req, res) => {
+authenticationRoutes.post('/signin', async (req, res) => {
 
     let user = new UserController(
         req.body.email,
-        req.body.password,
-        req.body.fullName
+        req.body.password
     )
 
-    return await user.createUser();
-    
+    const userResponse = await user.login();
+
+    if (isObject(userResponse))
+        return res.status(201).send(userResponse);
+    return res.status(400).send(userResponse);
+
 });
