@@ -1,6 +1,8 @@
 import { Response, response } from 'express';
 import { IUser } from './interfaces/users.interface';
 import { User } from '../../db/models/user.model';
+import { DataTypes } from 'sequelize';
+import { Wallet } from '../../db/models/wallet.model';
 
 export class UserController implements IUser {
 
@@ -9,6 +11,21 @@ export class UserController implements IUser {
         private password: string,
         private fullName?: string
     ) { }
+
+    private async createWallet(userId: string): Promise<typeof Wallet | Error> {
+        const walletResponse = await Wallet.findOne(
+            {where: {userId: userId}}
+        );
+        if(walletResponse)
+            return 
+        
+        return await Wallet.create(
+            {
+                userId: userId
+            }
+        );
+        
+    }
 
     async createUser(): Promise<typeof User | Error> {
         const userResponse = await User.findOne(
@@ -19,13 +36,17 @@ export class UserController implements IUser {
             return creationUserError.message
         }
 
-        return await User.create(
+        const user = await User.create(
             {
                 fullName: this.fullName,
                 email: this.email,
                 password: this.password
             }
         );
+        
+        const wallet = await this.createWallet(user.id);
+
+        return user
     }
 
     async login(): Promise<Error | Object> {
