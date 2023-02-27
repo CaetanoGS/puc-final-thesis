@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     volumes: 
-      - psql:/var/lib/postgresql/data:Z
+      - ./tmp/run/psql:/var/lib/postgresql/data:Z
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4_container

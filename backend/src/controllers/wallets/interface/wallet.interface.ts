@@ -1,3 +1,3 @@
 export interface IWallet{
-    getWalletById(walletId: string);
+    getWalletById(walletId: string): Promise<Response|Error>;
 }

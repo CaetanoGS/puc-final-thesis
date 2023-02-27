@@ -10,4 +10,4 @@ export const routes = express.Router();
 routes.use(walletRoutes);
 routes.use(authenticationRoutes);
 routes.use(userRoutes);
-//routes.use(transationRoutes);
+routes.use(transationRoutes);
