@@ -2,9 +2,9 @@ import { Router } from 'express';
 import { UserController } from '../controllers/users/user.controller';
 import { User } from '../db/models/user.model';
 
-export const userRoutes1 = Router();
+export const userRoutes = Router();
 
-userRoutes1.post('/signup', async (req, res) => {
+userRoutes.post('/signup', async (req, res) => {
 
     let user = new UserController(
         req.body.email,
