@@ -49,7 +49,17 @@ export class UserController implements IUser {
         return user
     }
 
-    async login(): Promise<string | Error | Object> {
+    async getUserIdByEmail(): Promise<string | null>{
+        const userResponse = await User.findOne(
+            { where: { email: this.email } }
+        );
+        if(userResponse)
+            return userResponse.id;
+        return null;
+
+    }
+
+    async login(): Promise<string | Object> {
         const userResponse = await User.findOne(
             { where: { email: this.email } }
         );
@@ -61,7 +71,7 @@ export class UserController implements IUser {
             return invalidCredentialsError.message;
 
         if (this.email == userResponse.email && this.password == userResponse.password)
-            return { token: "fjdnkjfdfkjdfhdfkjbdfkjdfbdfkjdfbdkf" }
+            return {token: "fjdnkjfdfkjdfhdfkjbdfkjdfbdfkjdfbdkf"}
 
         return invalidCredentialsError.message;
 

@@ -1,5 +1,6 @@
 import { ITransaction } from './interfaces/transaction.interface';
 import { Transaction } from '../../db/models/transactions.model';
+import { Wallet } from '../../db/models/wallet.model';
 
 export const possibleTransactionTypes = ["debit", "credit"]
 
@@ -24,22 +25,33 @@ export class TransactionController implements ITransaction {
         return transaction;
     }
 
-    async createTransaction(value: number, type: string): Promise<typeof Transaction | Error> {
+    async createTransaction(value: number, type: string, userId: string): Promise<typeof Transaction | Error> {
 
         if (!possibleTransactionTypes.includes(type)) {
             const createTransactionError = new Error("Invalid type, the type must be in this list `")
+            return createTransactionError.message
         }
 
-        return await Transaction.create(
-            {
-                value: value,
-                type: type
+        const wallet = await Wallet.findOne({
+            where: {
+                userId: userId
             }
-        );
+        });
+
+        if(wallet)
+            return await Transaction.create(
+                {
+                    value: value,
+                    type: type,
+                    walletId: wallet.id
+                }
+            );
+        const userHasNoWalletError = new Error("User has no wallet")
+        return userHasNoWalletError.message;
     }
 
     async updateTransaction(transactionId: string, value: number, type: string): Promise<typeof Transaction | Error> {
-        const retrievedTransaction = Transaction.findOne(
+        const retrievedTransaction = await Transaction.findOne(
             { where: { id: transactionId } }
         )
         const notFoundError = new Error(`Transaction with id ${transactionId} does not exists`);
@@ -60,7 +72,7 @@ export class TransactionController implements ITransaction {
     }
 
     async deleteTransaction(transactionId: string): Promise< void | string> {
-        const transactionToDelete = Transaction.findOne(
+        const transactionToDelete = await Transaction.findOne(
             { where: { id: transactionId } }
         );
 

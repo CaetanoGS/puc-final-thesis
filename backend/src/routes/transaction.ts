@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { TransactionController } from '../controllers/transactions/transaction.controller';
 import { Transaction } from '../db/models/transactions.model';
+import { isObject } from 'util';
 
 export const transationRoutes = Router();
 
@@ -18,7 +19,7 @@ transationRoutes.get('/transactions/:id', async (req, res) => {
     
     const transaction = await controller.getTransactionById(req.params.id);
 
-    if (typeof transaction != Transaction)
+    if (!isObject(transaction))
         return res.status(404).send(transaction)
     
     return res.status(200).send(transaction);
@@ -27,12 +28,12 @@ transationRoutes.get('/transactions/:id', async (req, res) => {
 transationRoutes.post('/transactions', async (req, res) => {
     const value = req.body.value;
     const type = req.body.type;
+    const userId = req.body.userId
 
     const controller = new TransactionController()
     
-    const transaction = await controller.createTransaction(value, type);
-
-    if (typeof transaction != Transaction)
+    const transaction = await controller.createTransaction(value, type, userId);
+    if (!isObject(transaction))
         return res.status(400).send(transaction)
     
     return res.status(201).send(transaction);
@@ -48,7 +49,7 @@ transationRoutes.put('/transactions/:id', async (req, res) => {
     
     const transaction = await controller.updateTransaction(transactionId, value, type);
 
-    if (typeof transaction != Transaction)
+    if (!isObject(transaction))
         return res.status(400).send(transaction)
     
     return res.status(200).send(transaction);
@@ -60,9 +61,6 @@ transationRoutes.delete('/transactions/:id', async (req, res) => {
     const controller = new TransactionController()
     
     const transaction = await controller.deleteTransaction(transactionId);
-
-    if (typeof transaction != Transaction)
-        return res.status(404).send(transaction)
     
     return res.status(204).send(transaction);
 });

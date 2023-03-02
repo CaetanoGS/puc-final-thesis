@@ -15,8 +15,13 @@ authenticationRoutes.post('/signin', async (req, res) => {
 
     const userResponse = await user.login();
 
-    if (isObject(userResponse))
+    if (isObject(userResponse)){
+        const userId = await user.getUserIdByEmail();
+        const token = userResponse.token
+        res.cookie("token", token);
+        res.cookie("userId", userId);
         return res.status(201).send(userResponse);
+    }
     return res.status(400).send(userResponse);
 
 });
