@@ -49,7 +49,7 @@ export class UserController implements IUser {
         return user
     }
 
-    async login(): Promise<Error | Object> {
+    async login(): Promise<string | Error | Object> {
         const userResponse = await User.findOne(
             { where: { email: this.email } }
         );

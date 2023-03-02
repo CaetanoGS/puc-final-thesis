@@ -1,25 +1,68 @@
 import { Router } from 'express';
+import { TransactionController } from '../controllers/transactions/transaction.controller';
+import { Transaction } from '../db/models/transactions.model';
 
 export const transationRoutes = Router();
 
 
-transationRoutes.get('/transactions', (req, res) => {
-    res.send("List transations");
+transationRoutes.get('/transactions', async (req, res) => {
+    const controller = new TransactionController()
+    
+    const transactions = await controller.getTransaction();
+
+    return res.status(200).send(transactions);
 });
 
-transationRoutes.get('/transactions/:id', (req, res) => {
-    res.send("Retrieve transation");
+transationRoutes.get('/transactions/:id', async (req, res) => {
+    const controller = new TransactionController()
+    
+    const transaction = await controller.getTransactionById(req.params.id);
+
+    if (typeof transaction != Transaction)
+        return res.status(404).send(transaction)
+    
+    return res.status(200).send(transaction);
 });
 
-transationRoutes.post('/transactions', (req, res) => {
-    res.send("Create transation");
+transationRoutes.post('/transactions', async (req, res) => {
+    const value = req.body.value;
+    const type = req.body.type;
+
+    const controller = new TransactionController()
+    
+    const transaction = await controller.createTransaction(value, type);
+
+    if (typeof transaction != Transaction)
+        return res.status(400).send(transaction)
+    
+    return res.status(201).send(transaction);
 });
 
 
-transationRoutes.put('/transactions/:id', (req, res) => {
-    res.send("Update transation");
+transationRoutes.put('/transactions/:id', async (req, res) => {
+    const value = req.body.value;
+    const type = req.body.type;
+    const transactionId = req.params.id
+
+    const controller = new TransactionController()
+    
+    const transaction = await controller.updateTransaction(transactionId, value, type);
+
+    if (typeof transaction != Transaction)
+        return res.status(400).send(transaction)
+    
+    return res.status(200).send(transaction);
 });
 
-transationRoutes.delete('/transactions/:id', (req, res) => {
-    res.send("Delete transation");
+transationRoutes.delete('/transactions/:id', async (req, res) => {
+    const transactionId = req.params.id
+
+    const controller = new TransactionController()
+    
+    const transaction = await controller.deleteTransaction(transactionId);
+
+    if (typeof transaction != Transaction)
+        return res.status(404).send(transaction)
+    
+    return res.status(204).send(transaction);
 });

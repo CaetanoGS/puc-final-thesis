@@ -16,11 +16,18 @@ export const Transaction = db.sequelize.define("transactions", {
     type: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+        defaultValue: DataTypes.NOW 
     }
 },
-    {
-        timestamps: true,
-    }
 );
 
 Wallet.hasMany(Transaction)

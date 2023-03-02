@@ -1,9 +1,10 @@
 import Response from 'express';
+import { Transaction } from '../../../db/models/transactions.model';
 
 export interface ITransaction{
-    getTransaction(): Promise<Response|Error>
-    getTransactionById(transactionId: string): Promise<Response|Error>
-    createTransaction(): Promise<Response|Error>
-    updateTransaction(transactionId: string): Promise<Response|Error>
-    deleteTransaction(transactionId: string): Promise<Response|Error>
+    getTransaction(): Promise<[typeof Transaction]|Error>
+    getTransactionById(transactionId: string): Promise<typeof Transaction|Error>
+    createTransaction(value: number, type: string): Promise<typeof Transaction|Error>
+    updateTransaction(transactionId: string, value: number, type: string): Promise<typeof Transaction|Error>
+    deleteTransaction(transactionId: string): Promise<void|string>
 }
