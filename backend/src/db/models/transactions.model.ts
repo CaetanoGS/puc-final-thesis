@@ -17,15 +17,14 @@ export const Transaction = db.sequelize.define("transactions", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    category: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-        defaultValue: DataTypes.NOW 
     }
 },
 );

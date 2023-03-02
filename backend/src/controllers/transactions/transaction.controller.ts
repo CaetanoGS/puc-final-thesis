@@ -3,6 +3,7 @@ import { Transaction } from '../../db/models/transactions.model';
 import { Wallet } from '../../db/models/wallet.model';
 
 export const possibleTransactionTypes = ["debit", "credit"]
+export const possibleTransactionCategories = ["stock", "salary", "market", "travel", "house", "hobbies"]
 
 export class TransactionController implements ITransaction {
 
@@ -25,11 +26,19 @@ export class TransactionController implements ITransaction {
         return transaction;
     }
 
-    async createTransaction(value: number, type: string, userId: string): Promise<typeof Transaction | Error> {
+    async createTransaction(value: number, type: string, category: string, userId: string): Promise<typeof Transaction | Error> {
 
         if (!possibleTransactionTypes.includes(type)) {
-            const createTransactionError = new Error("Invalid type, the type must be in this list `")
-            return createTransactionError.message
+            const createTransactionTypeError = new Error(`Invalid type, the type must be in this list ${possibleTransactionTypes}`)
+            return createTransactionTypeError.message
+        }
+        
+
+        console.log(`Category: ${category} nao faz parte do array ${possibleTransactionCategories}`)
+
+        if (!possibleTransactionCategories.includes(category)) {
+            const createTransactionCategoryError = new Error(`Invalid category, the category must be in this list ${possibleTransactionCategories}`)
+            return createTransactionCategoryError.message
         }
 
         const wallet = await Wallet.findOne({
@@ -43,7 +52,8 @@ export class TransactionController implements ITransaction {
                 {
                     value: value,
                     type: type,
-                    walletId: wallet.id
+                    walletId: wallet.id,
+                    category: category
                 }
             );
         const userHasNoWalletError = new Error("User has no wallet")

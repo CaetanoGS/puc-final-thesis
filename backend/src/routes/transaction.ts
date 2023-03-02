@@ -29,10 +29,11 @@ transationRoutes.post('/transactions', async (req, res) => {
     const value = req.body.value;
     const type = req.body.type;
     const userId = req.body.userId
+    const category = req.body.category
 
     const controller = new TransactionController()
     
-    const transaction = await controller.createTransaction(value, type, userId);
+    const transaction = await controller.createTransaction(value, type, category, userId);
     if (!isObject(transaction))
         return res.status(400).send(transaction)
     
