@@ -4,6 +4,7 @@ import { User } from '../../db/models/user.model';
 import { DataTypes } from 'sequelize';
 import { Wallet } from '../../db/models/wallet.model';
 import bcrypt, { hash } from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export class UserController implements IUser {
 
@@ -73,7 +74,7 @@ export class UserController implements IUser {
 
     }
 
-    async login(): Promise<string | Object> {
+    async login(): Promise<Object | string> {
         const userResponse = await User.findOne(
             { where: { email: this.email } }
         );
@@ -95,7 +96,14 @@ export class UserController implements IUser {
             })
 
             if (isPasswordCorrect) {
-                return { token: "fjdnkjfdfkjdfhdfkjbdfkjdfbdfkjdfbdkf" }
+                const token = jwt.sign(
+                    {name: this.email}, 
+                    process.env.DOCA_TOKEN_JWT, 
+                    {expiresIn: 60*60}
+                ) 
+                return { 
+                    token: token
+                }
             }
         }
         return invalidCredentialsError.message;

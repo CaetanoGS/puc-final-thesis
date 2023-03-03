@@ -1,6 +1,6 @@
 export interface IUser{
     
-    login(): Promise<string|Error|Object>;
+    login(): Promise<Object|Error>;
     createUser(): Promise<Response|Error>;
 
 }
