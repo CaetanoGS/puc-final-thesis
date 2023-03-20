@@ -17,9 +17,11 @@ authenticateRouter.post("/", async (req, res) => {
             if (err || !bcryptRes)
                 res.status(400).send({detail: "Not possible to authenticate, check the password or the username"})
 
-            res.status(201).send(
+            const token = jwt.sign(user.email, process.env.TOKEN_SECRET)
+
+            res.status(201).cookie("token", token).cookie("username", user.email).send(
                 {
-                    token: jwt.sign(user.email, process.env.TOKEN_SECRET)
+                    token: token
                 }
             );
         });
