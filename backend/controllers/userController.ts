@@ -1,8 +1,7 @@
-import { User } from "@prisma/client";
 import prisma from "../prisma/prisma";
 import bcrypt from "bcrypt"
 
-export async function registerNewUser(username: string, password: string, name: string): Promise<User> {
+export async function registerNewUser(username: string, password: string, name: string) {
 
     try {
         const hashedPwd = await bcrypt.hash(password, 10);
@@ -12,6 +11,12 @@ export async function registerNewUser(username: string, password: string, name: 
                     email: username,
                     password: hashedPwd,
                     name: name
+                },
+                select: {
+                    password: false,
+                    id: true,
+                    email: true,
+                    name: true
                 }
             }
         );
