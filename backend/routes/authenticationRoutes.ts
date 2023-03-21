@@ -12,14 +12,16 @@ authenticateRouter.post("/", async (req, res) => {
 
     const user = await getUserByUsername(req.body.username);
 
-    if (user){
-        bcrypt.compare(req.body.password, user.password, function(err, bcryptRes) {
+    if (user) {
+        bcrypt.compare(req.body.password, user.password, function (err, bcryptRes) {
             if (err || !bcryptRes)
-                res.status(400).send({detail: "Not possible to authenticate, check the password or the username"})
+                res.status(400).send({ detail: "Not possible to authenticate, check the password or the username" })
 
-            const token = jwt.sign(user.email, process.env.TOKEN_SECRET)
+            const token = jwt.sign({username: user.email}, process.env.TOKEN_SECRET, {
+                expiresIn: "3600",
+            })
 
-            res.status(201).cookie("token", token).cookie("username", user.email).send(
+            res.status(201).cookie("session", token).cookie("username", user.email).send(
                 {
                     token: token
                 }

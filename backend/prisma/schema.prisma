@@ -30,7 +30,7 @@ model Transaction {
   id        String   @id @default(uuid())
   value     Float
   category  String
-  setor     String
+  sector     String
   wallet    Wallet   @relation(fields: [walletId], references: [id])
   walletId  String
   createdAt DateTime @default(now())
