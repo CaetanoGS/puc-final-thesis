@@ -42,10 +42,6 @@ transactionRouter.post("/", async (req, res) => {
 
   const cookieList = parseCookies(req)
   const username = cookieList["username"]
-
-  const createdTransaction = await createTransaction(username, req.body.value, req.body.category, req.body.sector)
   
-  if(!createTransaction)
-    res.status(404).send("Cannot find user or user wallet")
-  res.status(201).send(createTransaction)
+  res.send(await createTransaction(username, req.body.value, req.body.category, req.body.sector))
 });
