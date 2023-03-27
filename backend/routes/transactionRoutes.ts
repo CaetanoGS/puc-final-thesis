@@ -1,7 +1,6 @@
 import express from "express";
 import { POSSIBLE_CATEGORIES, POSSIBLE_SECTORS, createTransaction, validateCategory, validateSector } from "../controllers/transactionController";
 import jwt from "jsonwebtoken"
-import prisma from "../prisma/prisma";
 
 export const transactionRouter = express.Router()
 
