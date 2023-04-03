@@ -2,27 +2,12 @@
 import { useState } from "react";
 import React from "react";
 import loginImg from "../assets/login.png";
-import axios from "axios";
+import AuthService from "../services/auth.service";
+
 
 export default function () {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  async function login() {
-    let payload = {
-      username: email,
-      password: password,
-    };
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const res = await axios.post("http://localhost:3000/authenticate/", payload, config);
-    debugger;
-    console.log(res)
-  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
@@ -33,7 +18,7 @@ export default function () {
       <div className="flex flex-col justify-center">
         <form
           className="max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg"
-          onSubmit={login}
+          onSubmit={AuthService.login(email, password)}
         >
           <p className=" text-center text-[#5678CE] text-2xl">Sign In</p>
 

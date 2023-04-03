@@ -9,7 +9,6 @@ export default function App() {
     <Router>
       <div>
         <Routes>
-          <Route path='/signup' element={<Register/>} />
           <Route path='/' element={<Login/>} />
           <Route path='/dashboard' element={<Dashboard/>} />
         </Routes>

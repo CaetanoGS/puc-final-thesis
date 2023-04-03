@@ -13,9 +13,9 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.use("/authenticate", authenticateRouter)
-app.use("/users", userRouter)
-app.use("/transactions", transactionRouter)
+app.use("/api/authenticate", authenticateRouter)
+app.use("/api/users", userRouter)
+app.use("/api/transactions", transactionRouter)
 
 
 const PORT = process.env.PORT || 3000
