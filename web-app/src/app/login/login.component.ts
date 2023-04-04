@@ -18,13 +18,10 @@ export class LoginComponent {
 
   ngOnInit() { } 
 
-  login(username: string, password: string) {
-    var promise = new Promise((resolve, reject) => {
+  async login(username: string, password: string) {
       this.loginService.getLoginToken(username, password).subscribe(
-        (response) => {console.log(response); localStorage.setItem("token", response.token) ; resolve("done")}
+        (response) => {console.log(response); localStorage.setItem("token", response.token) ;}
       )
-    });
-    return promise;
   }
 }
 
