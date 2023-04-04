@@ -1,20 +1,17 @@
-<div>
-  <mat-grid-list cols="2" rowHeight="2:1">
-    <div>
-        <form class="login-form">
-            <mat-form-field class="login-full-width">
-              <mat-label>Username</mat-label>
-              <input matInput placeholder="email@email.com" />
-            </mat-form-field>
-      
-            <mat-form-field class="login-full-width">
-              <mat-label>Password</mat-label>
-              <input matInput placeholder="Password" type="password" />
-            </mat-form-field>
-          </form>
-    </div>
-    <div>
-        Oi
-    </div>
-  </mat-grid-list>
+<div fxLayoutAlign="center center" fxFlexFill class="mainDiv">
+  <mat-card fxFlex="35">
+    <mat-toolbar color="primary" > Login </mat-toolbar>
+    <form fxLayoutAlign="stretch" fxLayout="column" (submit)="login(username.value, password.value)" >
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" type="email" #username />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" type="password" #password/>
+      </mat-form-field>
+      <button mat-button type="submit">Login</button>
+    </form>
+  </mat-card>
 </div>
