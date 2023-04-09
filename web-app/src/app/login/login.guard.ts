@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LoginService } from "./login.service";
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlSegmentGroup, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
 
 @Injectable()
@@ -10,7 +10,7 @@ export class LoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> {
+  ): Observable<boolean> {      
     return this.loginService.isAuthenticated();
   }
 }

@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { LoginGuard } from './login/login.guard';
 import { LoginService } from './login/login.service';
+import { DashboardService } from './dashboard/dashboard.service';
 
 
 
@@ -40,7 +41,7 @@ import { LoginService } from './login/login.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginGuard, LoginService],
+  providers: [LoginGuard, LoginService, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

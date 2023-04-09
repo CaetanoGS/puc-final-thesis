@@ -28,9 +28,14 @@ export class LoginService {
     this.router.navigate(["dashboard"])
   }
 
+  redirectUsertoLoginPage(){
+    this.router.navigate(["login"])
+  }
+
   isAuthenticated(): Observable<boolean>{
-    if(!localStorage.getItem("token"))
-      return of(false);
+    if(!localStorage.getItem("token")){
+      this.redirectUsertoLoginPage();
+    }
     return of(true);
   }
 }

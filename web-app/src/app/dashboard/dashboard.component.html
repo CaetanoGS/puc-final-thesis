@@ -58,54 +58,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let transaction of transactions">
               <td mat-cell>
                 <p>Salary</p>
               </td>
               <td mat-cell>01-10-2023</td>
               <td mat-cell><span class="status completed">$3000</span></td>
               <td mat-cell>
-                <button mat-fab extended color="warn">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Market</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status pending">-$100</span></td>
-              <td>
-                <button mat-fab extended color="warn">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Market</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status process">-$98</span></td>
-              <td>
-                <button mat-fab extended color="warn">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Restaurant</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status pending">-$60</span></td>
-              <td>
-                <button mat-fab extended color="warn">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Rent</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status completed">-$1000</span></td>
-              <td>
-                <button mat-fab extended color="warn">Delete</button>
+                <button mat-fab extended color="warn" (click)="deleteTransaction(transaction.id)">Delete</button>
               </td>
             </tr>
           </tbody>
