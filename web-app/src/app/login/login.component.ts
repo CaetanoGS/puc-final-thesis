@@ -1,7 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { LoginService } from './login.service';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { LoginToken } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +9,15 @@ import { LoginToken } from './login.model';
 })
 export class LoginComponent {
 
-  private token = new Subject<LoginToken>();
-  public token$ = this.token.asObservable();
+  public username: string = "";
+  public password: string = "";
 
   constructor(private loginService: LoginService) { }
 
-  ngOnInit() { } 
-
-  async login(username: string, password: string) {
-      this.loginService.getLoginToken(username, password).subscribe(
-        (response) => {console.log(response); localStorage.setItem("token", response.token) ;}
+  login() {
+    console.log(this.username)
+      this.loginService.getLoginToken(this.username, this.password).subscribe(
+        (response) => {console.log(response);}
       )
   }
 }

@@ -29,4 +29,5 @@ authenticateRouter.post("/", async (req, res) => {
             );
         });
     }
+    res.status(400).send("User or Password is invalid");
 })

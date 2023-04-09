@@ -15,7 +15,7 @@
         <form>
           <label for="chk" aria-hidden="true">Sign up</label>
           <input type="text" name="txt" placeholder="Full name" required="" />
-          <input type="email" name="email" placeholder="Email" required="" />
+          <input type="email" name="email" placeholder="Email" required=""/>
           <input
             type="password"
             name="pswd"
@@ -29,14 +29,15 @@
       <div class="login">
         <form>
           <label for="chk" aria-hidden="true">Log in</label>
-          <input type="email" name="email" placeholder="Email" required="" />
+          <input type="email" name="email" placeholder="Email" required="" [(ngModel)] = "username"/>
           <input
             type="password"
             name="pswd"
             placeholder="Password"
             required=""
+            [(ngModel)] = "password"
           />
-          <button>Login</button>
+          <button (click)="login()">Login</button>
         </form>
       </div>
     </div>
