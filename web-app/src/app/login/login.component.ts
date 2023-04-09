@@ -5,7 +5,7 @@ import { LoginService } from './login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: []
 })
 export class LoginComponent {
 

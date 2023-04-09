@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -16,12 +16,21 @@ export class LoginService {
       }
     ).pipe(
       tap(
-        () => this.redirectUsertoDashboard()
+        (response) => {
+          localStorage.setItem("token", response.token);
+          this.redirectUsertoDashboard();
+        }
       )
     )
   }
 
   redirectUsertoDashboard() {
     this.router.navigate(["dashboard"])
+  }
+
+  isAuthenticated(): Observable<boolean>{
+    if(!localStorage.getItem("token"))
+      return of(false);
+    return of(true);
   }
 }

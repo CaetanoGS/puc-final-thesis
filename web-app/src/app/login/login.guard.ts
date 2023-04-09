@@ -4,13 +4,13 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angul
 import { Observable } from "rxjs";
 
 @Injectable()
-class LoginGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(private loginService: LoginService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.permissions.canActivate(this.currentUser, route.params.id);
+    return this.loginService.isAuthenticated();
   }
 }

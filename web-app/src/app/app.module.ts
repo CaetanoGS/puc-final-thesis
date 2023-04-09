@@ -15,6 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { LoginGuard } from './login/login.guard';
+import { LoginService } from './login/login.service';
 
 
 
@@ -38,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LoginGuard, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
