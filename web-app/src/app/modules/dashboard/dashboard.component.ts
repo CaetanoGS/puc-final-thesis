@@ -9,6 +9,7 @@ import { DashboardService } from './dashboard.service';
 export class DashboardComponent {
 
   transactions: any[] = []
+  showFiller = false;
 
   constructor(private dashboardService: DashboardService){
     this.dashboardService.getTransactions().subscribe(

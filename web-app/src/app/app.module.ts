@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './modules/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,11 +13,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
-import { LoginGuard } from './login/login.guard';
-import { LoginService } from './login/login.service';
-import { DashboardService } from './dashboard/dashboard.service';
+import { LoginGuard } from './modules/login/login.guard';
+import { LoginService } from './modules/login/login.service';
+import { DashboardService } from './modules/dashboard/dashboard.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 
@@ -25,7 +29,7 @@ import { DashboardService } from './dashboard/dashboard.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,10 @@ import { DashboardService } from './dashboard/dashboard.service';
     MatGridListModule,
     MatToolbarModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatDividerModule,
   ],
   providers: [LoginGuard, LoginService, DashboardService],
   bootstrap: [AppComponent]

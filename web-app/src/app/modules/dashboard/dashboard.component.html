@@ -1,10 +1,12 @@
-<!-- CONTENT -->
+<!--
 <section id="content">
-  <!-- MAIN -->
   <main>
     <div class="head-title">
       <div class="left">
         <h1>Finance Management</h1>
+      </div>
+      <div class="right">
+        <i class='bx bxs-exit bx-sm' id="logout"></i>
       </div>
     </div>
 
@@ -73,6 +75,53 @@
       </div>
     </div>
   </main>
-  <!-- MAIN -->
 </section>
-<!-- CONTENT -->
+-->
+<div>
+  <mat-toolbar>
+    <h3>Doca Financial Management</h3>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <!-- Main Content -->
+
+  <mat-grid-list cols="4" rowHeight="500px">
+    <mat-grid-tile  colspan="1" rowspan="1">
+      <table id="last-transactions">
+        <thead>
+          <tr>
+            <th mat-header-cell>Category</th>
+            <th mat-header-cell>Date Order</th>
+            <th mat-header-cell>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <td mat-cell>
+              <p>Salary</p>
+            </td>
+            <td mat-cell>01-10-2023</td>
+            <td mat-cell><span class="status completed">$3000</span></td>
+            <td mat-cell>
+              <button
+                mat-fab
+                extended
+                color="warn"
+                (click)="deleteTransaction(transaction.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
