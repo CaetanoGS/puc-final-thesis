@@ -21,6 +21,9 @@ import { DashboardService } from './modules/dashboard/dashboard.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 
@@ -37,12 +40,14 @@ import {MatDividerModule} from '@angular/material/divider';
     FlexLayoutModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     MatGridListModule,
     MatToolbarModule,
     HttpClientModule,
+    MatTableModule,
     FormsModule,
     MatSidenavModule,
     MatIconModule,

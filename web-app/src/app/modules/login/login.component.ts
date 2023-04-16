@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 
 @Component({
@@ -15,10 +15,9 @@ export class LoginComponent {
   constructor(private loginService: LoginService) { }
 
   login() {
-    console.log(this.username)
-      this.loginService.getLoginToken(this.username, this.password).subscribe(
-        (response) => {console.log(response);}
-      )
+    this.loginService.getLoginToken(this.username, this.password).subscribe(
+      (response) => { console.log(response); }
+    )
   }
 }
 
