@@ -59,8 +59,5 @@ export async function createTransaction(username: string, value: number, categor
       }
     }
   )
-
-  console.log(transaction)
-
   return transaction
 }
