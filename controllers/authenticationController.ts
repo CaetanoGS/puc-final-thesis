@@ -15,6 +15,7 @@ export async function getUserByUsername(username: string): Promise<User> {
             }
         );
     } catch (error) {
+        console.error(error)
         return null;
     }
 }

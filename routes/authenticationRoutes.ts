@@ -10,6 +10,8 @@ export const authenticateRouter = express.Router()
 
 authenticateRouter.post("/", async (req, res) => {
 
+    console.log(req.body.username)
+
     const user = await getUserByUsername(req.body.username);
 
     if (user) {
@@ -28,5 +30,7 @@ authenticateRouter.post("/", async (req, res) => {
                 }
             );
         });
+    }else {
+        res.status(400).send("username or password is invalid")
     }
 })
