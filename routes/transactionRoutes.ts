@@ -1,5 +1,5 @@
 import express from "express";
-import { POSSIBLE_CATEGORIES, POSSIBLE_SECTORS, createTransaction, validateCategory, validateSector } from "../controllers/transactionController";
+import { POSSIBLE_CATEGORIES, POSSIBLE_SECTORS, createTransaction, deleteTransaction, listTransactions, validateCategory, validateSector } from "../controllers/transactionController";
 import jwt from "jsonwebtoken"
 
 export const transactionRouter = express.Router()
@@ -44,3 +44,17 @@ transactionRouter.post("/", async (req, res) => {
   
   res.send(await createTransaction(username, req.body.value, req.body.category, req.body.sector))
 });
+
+transactionRouter.get("/", async (req, res) => {
+  const cookieList = parseCookies(req);
+  const username = cookieList["username"];
+
+  res.send(await listTransactions(username));
+})
+
+transactionRouter.delete("/:transactionId", async (req, res) => {
+  const deletedTransaction = await deleteTransaction(req.params.transactionId);
+  if(deleteTransaction)
+    res.status(204).send();
+  res.status(404);
+})
