@@ -76,7 +76,6 @@ export async function listTransactions(username: string) {
       }
     }
   )
-
   if (!user)
     return null
 
@@ -90,7 +89,6 @@ export async function listTransactions(username: string) {
       }
     }
   )
-
   if (!wallet)
     return null
   

@@ -3,19 +3,16 @@ import { userRouter } from "./routes/userRoutes"
 import { authenticateRouter } from "./routes/authenticationRoutes"
 import { transactionRouter } from "./routes/transactionRoutes"
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 app.use("/api/authenticate", authenticateRouter)
 app.use("/api/users", userRouter)
 app.use("/api/transactions", transactionRouter)
+app.use(cors());
 
 
 const PORT = process.env.PORT || 3000

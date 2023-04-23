@@ -20,9 +20,7 @@ authenticateRouter.post("/", async (req, res) => {
                 res.status(400).send({ detail: "Not possible to authenticate, check the password or the username" })
             }
 
-            const token = jwt.sign({username: user.email}, process.env.TOKEN_SECRET, {
-                expiresIn: "3600",
-            })
+            const token = jwt.sign({username: user.email}, process.env.TOKEN_SECRET)
 
             res.status(201).cookie("session", token).cookie("username", user.email).send(
                 {
