@@ -1,7 +1,7 @@
 import { Transaction } from "@prisma/client"
 import prisma from "../prisma/prisma"
 
-export const POSSIBLE_SECTORS = ["market", "house", "stocks", "hobbies", "emergency"]
+export const POSSIBLE_SECTORS = ["market", "house", "stocks", "hobbies", "emergency", "salary"]
 export const POSSIBLE_CATEGORIES = ["debit", "credit"]
 
 export function validateSector(sector: string): Boolean {
