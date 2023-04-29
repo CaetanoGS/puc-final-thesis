@@ -1,1 +1,1 @@
-web: npx ts-node ./backend/app.ts
+web: npm start
