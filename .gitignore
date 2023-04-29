@@ -3,7 +3,6 @@ tmp/
 .DS_STORE
 .angular
 
-/dist/
 /bazel-out
 /integration/bazel/bazel-*
 *.log
